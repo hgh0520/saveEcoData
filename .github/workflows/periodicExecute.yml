@@ -1,0 +1,32 @@
+# from https://velog.io/@yeonjin1357/GitHub-Action-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%84%9C-%EC%A3%BC%EA%B8%B0%EC%A0%81%EC%9C%BC%EB%A1%9C-Python-%EC%BD%94%EB%93%9C-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0
+
+# name: Run Python Code
+
+# on:
+#   schedule:
+#     - cron: '0/55 * * * *' # 55분마다 실행
+#   workflow_dispatch:
+
+# jobs:
+#   run-code:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Check out repository
+#         uses: actions/checkout@v2
+
+#       - name: Set up Python
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: 3.x
+
+#       - name: Install system dependencies
+#         run: sudo apt-get update && sudo apt-get install -y build-essential libffi-dev
+
+#       - name: Install Python dependencies
+#         run: |
+#           python -m pip install --upgrade pip
+#           pip install -r requirements.txt
+
+#       - name: run
+#         run: python saveEcoData.py
