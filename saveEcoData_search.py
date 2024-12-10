@@ -285,5 +285,13 @@ elif not os.path.exists(file_path):
     # 파일 저장
     wb.save(file_path)
 
-else:
-    print("There is nothing to update.")
+else:   # file exist and nothing to update
+    print("There is nothing to update.(Just update time)")
+
+    with pd.ExcelWriter(file_path, engine="openpyxl", mode = 'a', if_sheet_exists='replace') as writer:
+            # 엑셀 워크북과 워크시트 접근
+            wb = writer.book
+            ws = wb[data_sheet]
+
+            ws['G2'] = last_update_time
+            ws['G3'] = " "
