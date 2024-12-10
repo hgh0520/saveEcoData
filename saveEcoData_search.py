@@ -243,7 +243,7 @@ if os.path.exists(file_path) and not df.empty:
             ws['G2'] = last_update_time
             ws['G3'] = " "
     
-else:
+elif not os.path.exists(file_path):
     # 파일이 없으면 새로 생성
     df.to_excel(file_path, index=False)
 
@@ -284,3 +284,6 @@ else:
 
     # 파일 저장
     wb.save(file_path)
+
+else:
+    print("There is nothing to update.")
