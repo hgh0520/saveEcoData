@@ -14,8 +14,21 @@ import pandas as pd
 from openpyxl import load_workbook
 from openpyxl import Workbook
 from openpyxl.styles import Alignment
-from openpyxl.utils.dataframe import dataframe_to_rows
 import os
+import platform
+
+file_path = " "
+
+# OS 구분
+if platform.system() == "Darwin":
+    print("This is macOS.")
+    file_path = "/Users/hankwanghyun/Google Drive/내 드라이브/Mabinogi/에코스톤_판매내역_search.xlsx"
+elif platform.system() == "Windows":
+    print("This is Windows.")
+    file_path = "D:\Google 드라이브\Mabinogi\에코스톤_판매내역_search.xlsx"  # file path for windows
+else:
+    print(f"This is an unsupported OS: {platform.system()}")
+    exit()
 
 ecoNames = []
 ecoPrice = []
@@ -166,7 +179,6 @@ df = pd.DataFrame(data)
 
 # print(df)
 
-file_path = "D:\Google 드라이브\Mabinogi\에코스톤_판매내역_search.xlsx"
 data_sheet = "TotalData"
 search_sheet = "Browse"  # 새 시트 이름
 
