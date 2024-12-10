@@ -165,7 +165,7 @@ df = pd.DataFrame(data)
 
 # print(df)
 
-file_path = "D:\Google 드라이브\Mabinogi\에코스톤_판매내역.xlsx"
+file_path = "D:\Google 드라이브\Mabinogi\에코스톤_판매내역_search.xlsx"
 data_sheet = "TotalData"
 search_sheet = "Browse"  # 새 시트 이름
 
@@ -192,7 +192,7 @@ if os.path.exists(file_path) and not df.empty:
         else:
             break  # 더 이상 비교할 데이터가 없으면 종료
     
-    # print(df)
+    print(df)
 
     if not df.empty:
         # 기존 데이터를 2번째 행부터 시작하도록 재정렬
