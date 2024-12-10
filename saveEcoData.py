@@ -158,7 +158,8 @@ data = {
     "에코스톤 고유 능력": ecoStats,
     "에코스톤 각성 능력(전해)": ecoAwake,
     "판매 시각": ecoTimes,
-    "판매 가격": ecoPrice
+    "판매 가격": ecoPrice,
+    "마지막 업데이트 시각": [None] * len(ecoPrice)
 }
 
 df = pd.DataFrame(data)
@@ -195,6 +196,8 @@ if os.path.exists(file_path) and not df.empty:
     # print(df)
 
     if not df.empty:
+        existing_df['마지막 업데이트 시각'] = None
+
         # 기존 데이터를 2번째 행부터 시작하도록 재정렬
         updated_df = pd.concat([existing_df.iloc[:0], df, existing_df.iloc[0:]], ignore_index=True)
 
@@ -214,8 +217,8 @@ if os.path.exists(file_path) and not df.empty:
                 for cell in row:
                     cell.alignment = Alignment(horizontal="center", vertical="center")
 
-            ws['H2'] = '마지막 업데이트 시각'
-            ws['H3'] = last_update_time
+            ws['G2'] = last_update_time
+            ws['G3'] = " "
 
             # 열 너비 자동 조정
             auto_adjust_column_width(ws)
@@ -225,8 +228,8 @@ if os.path.exists(file_path) and not df.empty:
             wb = writer.book
             ws = wb[data_sheet]
 
-            ws['H2'] = '마지막 업데이트 시각'
-            ws['H3'] = last_update_time
+            ws['G2'] = last_update_time
+            ws['G3'] = " "
     
 else:
     # 파일이 없으면 새로 생성
